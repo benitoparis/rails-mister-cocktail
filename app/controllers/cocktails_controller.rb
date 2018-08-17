@@ -11,27 +11,23 @@ end
 
 
 def new
-@cocktail =  Cocktail.new
+  @cocktail =  Cocktail.new
 
 end
 
 def create
-allowed_params = params.require(:cocktail).permit(:name)
-@cocktail = Cocktail.new(allowed_params).save
-redirect_to cocktails_path
-
-
-=begin
-@Plante.save!
-if @Plante.save! // renvoie un booléen true ou false
-redirect_to gardens_path(@garden)
-else
-render “gardens/show”
+  @cocktail = Cocktail.new(allowed_params)
+  if @cocktail.save
+    redirect_to cocktail_path(@cocktail)
+  else
+    render :new
+  end
 end
-=end
 
+private
 
-
+def allowed_params
+  params.require(:cocktail).permit(:name, :photo)
 end
 
 
