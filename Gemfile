@@ -63,3 +63,6 @@ gem 'autoprefixer-rails'
 gem 'bootstrap-sass', '~> 3.3.7'
 gem 'font-awesome-sass', '~> 5.0.9'
 gem 'simple_form'
+
+# We don't want to share those secret keys on Github, we can use the dotenv gem for security.
+gem 'dotenv-rails', groups: [:development, :test]
